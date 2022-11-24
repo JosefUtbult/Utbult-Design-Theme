@@ -1,0 +1,69 @@
+/* Styling for the theme slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-light);
+    -webkit-transition: var(--theme-transition);
+    transition: var(--theme-transition);
+    border: solid 2px;
+    border-color: var(--primary-light);
+    border-radius: 34px;
+}
+
+.slider > * {
+    --padding: 3px;
+    --size: 24px;
+
+    position: absolute;
+    height: calc(var(--size) - var(--padding) * 2);
+    width: calc(var(--size) - var(--padding) * 2);
+    left: 3px;
+    bottom: 3px;
+    padding: var(--padding);
+    background-color: var(--primary-light);
+    color: var(--background-light);
+    -webkit-transition: var(--theme-transition);
+    transition: var(--theme-transition);
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--background-dark);
+    border-color: var(--primary-dark);
+}
+
+input:checked + .slider > * {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: var(--primary-dark);
+    color: var(--background-dark);
+}
+
+.slider > *:first-child,
+input:checked + .slider > *:last-child {
+    opacity: 0;
+}
+
+.slider > *:last-child,
+input:checked + .slider > *:first-child {
+    opacity: 1;
+}

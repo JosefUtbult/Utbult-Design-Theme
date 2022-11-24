@@ -1,0 +1,43 @@
+#PageHeading {
+    text-align: center;
+    width: 100%;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    height: var(--header-height);
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.logo > * {
+    position: absolute;
+    height: 100%;
+    transition: opacity var(--theme-transition);
+}
+
+.dark .logo > *:first-child,
+.light .logo > *:last-child {
+    opacity: 1;
+}
+
+.light .logo > *:first-child,
+.dark .logo > *:last-child {
+    opacity: 0;
+}
+
+.flexbox-column-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
