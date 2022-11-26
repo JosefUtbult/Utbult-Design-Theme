@@ -1,18 +1,18 @@
 /* Styling for the theme slider */
 :root {
-    --width: calc(1.5 * var(--header-icon-height));
-    --calculated-height: calc(var(--header-icon-height) - var(--header-icon-margin));
-    --calculated-width: calc(var(--width) - var(--header-icon-margin));
-    --padding: calc(var(--calculated-height) * 0.06);
-    --diameter: calc(var(--calculated-height) * 0.7);
-    --offcet: calc((var(--calculated-height) - var(--diameter) - var(--padding)) / 2);
-    --translation: calc(var(--width) - var(--header-icon-margin) - var(--offcet) * 2 - var(--diameter) - var(--padding));
+    --slider-width: calc(1.5 * var(--header-icon-height));
+    --slider-calculated-height: calc(var(--header-icon-height) - var(--header-icon-margin));
+    --slider-calculated-width: calc(var(--slider-width) - var(--header-icon-margin));
+    --slider-padding: calc(var(--slider-calculated-height) * 0.06);
+    --slider-diameter: calc(var(--slider-calculated-height) * 0.7);
+    --slider-offcet: calc((var(--slider-calculated-height) - var(--slider-diameter) - var(--slider-padding)) / 2);
+    --slider-translation: calc(var(--slider-width) - var(--header-icon-margin) - var(--slider-offcet) * 2 - var(--slider-diameter) - var(--slider-padding));
 }
 
 .switch {
     position: relative;
     display: inline-block;
-    width: var(--width);
+    width: var(--slider-width);
     height: var(--header-icon-height);
     margin-right: var(--header-icon-margin);
     margin-top: var(--header-icon-margin);
@@ -27,8 +27,8 @@
 .slider {
     position: absolute;
     cursor: pointer;
-    width: var(--calculated-width);
-    height: var(--calculated-height);
+    width: var(--slider-calculated-width);
+    height: var(--slider-calculated-height);
     top: 0;
     left: 0;
     right: 0;
@@ -36,18 +36,18 @@
     background-color: var(--background-light);
     -webkit-transition: var(--theme-transition);
     transition: var(--theme-transition);
-    border: solid var(--padding);
+    border: solid var(--slider-padding);
     border-color: var(--primary-light);
     border-radius: var(--header-icon-height);
 }
 
 .slider > * {
     position: absolute;
-    width: calc(var(--diameter) - var(--padding));
-    height: calc(var(--diameter) - var(--padding));
-    left: var(--offcet);
-    top: var(--offcet);
-    padding: var(--padding);
+    width: calc(var(--slider-diameter) - var(--slider-padding));
+    height: calc(var(--slider-diameter) - var(--slider-padding));
+    left: var(--slider-offcet);
+    top: var(--slider-offcet);
+    padding: var(--slider-padding);
     background-color: var(--primary-light);
     color: var(--background-light);
     -webkit-transition: var(--theme-transition);
@@ -61,9 +61,9 @@ input:checked + .slider {
 }
 
 input:checked + .slider > * {
-    -webkit-transform: translateX(var(--translation));
-    -ms-transform: translateX(var(--translation));
-    transform: translateX(var(--translation));
+    -webkit-transform: translateX(var(--slider-translation));
+    -ms-transform: translateX(var(--slider-translation));
+    transform: translateX(var(--slider-translation));
     background-color: var(--primary-dark);
     color: var(--background-dark);
 }

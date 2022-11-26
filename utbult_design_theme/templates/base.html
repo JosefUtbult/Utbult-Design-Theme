@@ -5,12 +5,13 @@
 		<title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
 		
 		<!-- Skeleton responsive boilerplate and base stylesheets -->
-		<link rel="stylesheet" href="{{ 'static/css/base.css'|url }}">
-		<link rel="stylesheet" href="{{ 'static/css/slider.css'|url }}">
-		<link rel="stylesheet" href="{{ 'static/css/header.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/skeleton.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/normalize.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/fonts/fonts.css'|url }}">
+		<link rel="stylesheet" href="{{ 'static/css/base.css'|url }}">
+		<link rel="stylesheet" href="{{ 'static/css/slider.css'|url }}">
+		<link rel="stylesheet" href="{{ 'static/css/header.css'|url }}">
+		<link rel="stylesheet" href="{{ 'static/css/burgerMenu.css'|url }}">
 
 		{% if page_css %}
 		<!-- Page specific stylesheets -->
@@ -29,10 +30,10 @@
 	<body class="dark">
 		<div id="header-container">
 			<div id="header" onclick="closeBurgerMenu()">
-				<div class="logo">
+				<a class="logo" href="/">
 					<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_White.svg'|url }}">
 					<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_Black.svg'|url }}">
-				</div>
+				</a>
 				<div>
 					<label class="switch"> 
 						<input type="checkbox" onclick="toggleLightDarkMode(this)" checked>
@@ -62,7 +63,7 @@
 				</div>
 				<div id="burger-menu-content">
 					<div>
-						<ul>
+						<ul id="nav">
 							{% for nav_item in nav %}
 							  {% include "nav.html" %}
 							{% endfor %}

@@ -9,8 +9,8 @@
     --secondary-light: #f1bf52;
     --secondary-light-detail: #f0b63b;
 
-    --disabled-light: rgba(231, 231, 231, 0.288);
-    --disabled-light-detail: rgba(68, 68, 68, 0.849);
+    --disabled-light: rgb(148, 148, 148);
+    --disabled-light-detail: rgb(68, 68, 68);
 
     /* Dark theme */
     --text-dark: #FFFFFF;
@@ -53,6 +53,19 @@ h6 {
 
 h1 {
     text-align: center;
+    font-size: 5rem;
+}
+
+#content h1 {
+    border-bottom: 1px solid;
+}
+
+.light h1 {
+    border-color: var(--text-light);
+}
+
+.dark h1 {
+    border-color: var(--text-dark);
 }
 
 p,

@@ -1,0 +1,187 @@
+:root {
+    --burger-menu-padding: 8px;
+}
+
+#burger-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+#burger-menu-button-container button{
+    width: calc(var(--header-icon-height) - var(--header-icon-margin));
+    height: auto;
+    margin-top: var(--header-icon-margin);
+    margin-right: var(--header-icon-margin);
+    padding: 0;
+    border: none;
+}
+
+#burger-menu-content {
+    width: 0;    
+    transition: width var(--burger-menu-open);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.light #burger-menu-content {
+    background-color: var(--secondary-light);
+    color: var(--text-light);
+}
+
+.dark #burger-menu-content {
+    background-color: var(--secondary-dark);
+    color: var(--text-dark);
+}
+
+#burger-menu.open > #burger-menu-content {
+    width: var(--burger-menu-width);
+    /* width: auto; */
+}
+
+
+#burger-menu-content h1,
+#burger-menu-content h2,
+#burger-menu-content h3,
+#burger-menu-content h4,
+#burger-menu-content h5,
+#burger-menu-content h6,
+#burger-menu-content p,
+#burger-menu-content a,
+#burger-menu-content button {
+    color: inherit;
+    font-family: UbuntuMono;
+    margin: 0;
+}
+
+#burger-menu-content h1 {
+    font-size: 18px;
+    text-align: left;
+}
+
+#burger-menu-content h2 {
+    font-size: 16px;
+}
+
+#burger-menu-content h3 {
+    font-size: 14px;
+}
+
+#burger-menu-content h4 {
+    font-size: 12px;
+}
+
+#burger-menu-content h5 {
+    font-size: 10px;
+}
+
+#burger-menu-content h6 {
+    font-size: 9px;
+}
+
+#burger-menu-content p {
+    font-size: 8px;
+}
+
+#burger-menu-content a,
+#burger-menu-content button {
+    font-size: large;
+    text-decoration: none;
+}
+
+#burger-menu-content button {
+    border: none;
+    padding: 0;
+}
+
+#burger-menu-content a:link,
+#burger-menu-content a:visited,
+#burger-menu-content a:hover,
+#burger-menu-content a:active {
+    text-decoration: inherit;
+}
+
+#burger-menu-content > div {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#burger-menu-content .active a {
+    text-decoration: underline;
+}
+
+#burger-menu-content ul::marker,
+#burger-menu-content li::marker {
+    content: "";
+}
+
+#burger-menu-content ul {
+    overflow-y: hidden;
+    transition: height var(--burger-menu-open);
+    margin: 0;
+    padding-left: 10px;
+}
+
+#burger-menu-content ul.hidden {
+    height: 0;
+}
+
+#burger-menu-content li {
+    margin-top: var(--burger-menu-padding);
+    margin-bottom: 0;
+}
+
+#burger-menu-content hr {
+    width: 100%;
+}
+
+.light #burger-menu-content hr {
+    border-color: var(--text-light);
+}
+
+.dark #burger-menu-content hr {
+    border-color: var(--text-dark);
+}
+
+#burger-menu-content .burger-heading-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#burger-menu-content .burger-heading-container > *:first-child {
+    flex-grow: 1;
+}
+
+#burger-menu-content .burger-heading-container div {
+    width: 10px;
+    height: 10px;
+}
+
+#burger-menu-content #toc > li > .burger-heading-container div {
+    width: 0;
+}
+
+#burger-menu-content .burger-heading-container div > button {
+    width: 100%;
+    height: 100%;
+}
+
+#burger-menu-content .burger-heading-container button svg {
+    width: 100%;
+    position: relative;
+    /* TODO: Figure out why the auto placement breakes */
+    left: -2px;
+    top: -5px;
+}
+
+#toc ul,
+#nav ul {
+    border-left: solid 1px;
+    border-left-color: rgba(126, 126, 126, 0.2)
+}
+
+#toc > ul,
+#nav > ul {
+    border-left: none;
+}

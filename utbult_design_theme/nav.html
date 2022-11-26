@@ -1,14 +1,29 @@
 {% if not nav_item.children %}
 <li {% if nav_item.active %}class="active"{% endif %}>
-    <a href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
+  <div class="burger-heading-container">
+    <a href="{{ nav_item.url|url }}">
+      <h1>{{ nav_item.title }}</h1>
+    </a>
+    <div></div>
+  </div>  
 </li>
 {% else %}
   <li>
-    <button onclick="toggleBurgerMenuInstance(this)">{{ nav_item.title }}</button>
+    <div class="burger-heading-container">
+      <h1>{{ nav_item.title }}</h1>
+      <div>
+        <button onclick="toggleBurgerMenuInstance(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" preserveAspectRatio="none">
+              <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
     <ul class="hidden">
-        {% for nav_item in nav_item.children %}
-            {% include "nav.html" %}
-        {% endfor %}
+      {% for nav_item in nav_item.children %}
+      {% include "nav.html" %}
+      {% endfor %}
     </ul>
   </li>
 {% endif %}
