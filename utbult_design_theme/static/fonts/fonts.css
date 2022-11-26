@@ -38,3 +38,18 @@
   	font-weight: bold;
   	src: url(../fonts/Raleway/static/Raleway-Bold.ttf);
 }
+@font-face {
+	font-family: UbuntuMono;
+	font-weight: normal;
+	src: url(../fonts/UbuntuMono/UbuntuMono-Regular.ttf);
+}
+@font-face {
+	font-family: UbuntuMono;
+	font-weight: bold;
+	src: url(../fonts/UbuntuMono/UbuntuMono-Bold.ttf);
+}
+@font-face {
+	font-family: UbuntuMono;
+	font-weight: italic;
+	src: url(../fonts/UbuntuMono/UbuntuMono-Italic.ttf);
+}
