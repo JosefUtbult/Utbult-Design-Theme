@@ -28,6 +28,7 @@
     /* Transitions */
     --theme-transition: 400ms ease-in-out;
     --burger-menu-open: 200ms ease-in-out;
+    --button-transition: 200ms ease-in-out;
     /* --burger-menu-open: 2s ease-in-out; */
 
     /* Sizes */
@@ -37,7 +38,7 @@
     --burger-menu-width: 400px;
 }
 
-body {
+.theme-transition body {
     transition: background-color var(--theme-transition),
         color var(--theme-transition);
 }
@@ -60,12 +61,23 @@ h1 {
     border-bottom: 1px solid;
 }
 
-.light h1 {
+.light body h1 {
     border-color: var(--text-light);
 }
 
-.dark h1 {
+.dark body h1 {
     border-color: var(--text-dark);
+}
+
+.theme-transition body h1,
+.theme-transition body h2,
+.theme-transition body h3,
+.theme-transition body h4,
+.theme-transition body h5,
+.theme-transition body h6,
+.theme-transition body svg,
+.theme-transition body p {
+    transition: color var(--theme-transition);
 }
 
 p,
@@ -73,14 +85,60 @@ a {
     font-family: Raleway;
 }
 
-.dark {
+a {
+    text-decoration: none;
+}
+
+.dark body {
     background-color: var(--background-dark);
     color: var(--text-dark);
 }
 
-.light {
+.light body {
     background-color: var(--background-light);
     color: var(--text-light);
+}
+
+.dark body .btn {
+    border-color: var(--primary-dark-detail);
+    background-color: var(--primary-dark);
+    color: var(--background-dark);
+}
+
+.light body .btn {
+    border-color: var(--primary-light);
+    background-color: var(--primary-light);
+    color: var(--background-light);
+}
+
+.dark body .btn:hover {
+    border-color: var(--primary-dark-detail);
+    background-color: var(--primary-dark-detail);
+    color: var(--text-dark);
+}
+
+.light body .btn:hover {
+    border-color: var(--primary-light);
+    background-color: var(--primary-light-detail);
+    color: var(--text-light);
+}
+
+.theme-transition body .btn {
+    -webkit-transition: background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        color var(--theme-transition);
+    transition: background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        color var(--theme-transition);
+}
+
+.theme-transition body .btn:hover {
+    -webkit-transition: background-color var(--button-transition),
+        border-color var(--button-transition),
+        color var(--button-transition);
+    transition: background-color var(--button-transition),
+        border-color var(--button-transition),
+        color var(--button-transition);
 }
 
 @media (max-width: 1610px) {
@@ -90,6 +148,5 @@ a {
 }
 
 .content-container {
-    /* TODO: Remove */
-    height: 200vh;
+    min-height: 100vh;
 }

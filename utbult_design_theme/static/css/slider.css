@@ -34,11 +34,18 @@
     right: 0;
     bottom: 0;
     background-color: var(--background-light);
-    -webkit-transition: var(--theme-transition);
-    transition: var(--theme-transition);
     border: solid var(--slider-padding);
     border-color: var(--primary-light);
     border-radius: var(--header-icon-height);
+}
+
+.theme-transition body {
+    -webkit-transition: background-color var(--theme-transition);
+    transition: background-color var(--theme-transition);
+}
+
+.slider:hover {
+    border-color: var(--primary-light-detail);
 }
 
 .slider > * {
@@ -50,14 +57,34 @@
     padding: var(--slider-padding);
     background-color: var(--primary-light);
     color: var(--background-light);
-    -webkit-transition: var(--theme-transition);
-    transition: var(--theme-transition);
     border-radius: 50%;
+}
+
+.theme-transition body .slider,
+.theme-transition body .slider > * {
+    -webkit-transition: transform var(--theme-transition),
+        background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        opacity var(--theme-transition),
+        color var(--theme-transition);
+    transition: transform var(--theme-transition),
+        background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        opacity var(--theme-transition),
+        color var(--theme-transition);
+}
+
+.slider:hover > * {
+    background-color: var(--primary-light-detail);
 }
 
 input:checked + .slider {
     background-color: var(--background-dark);
     border-color: var(--primary-dark);
+}
+
+input:checked + .slider:hover {
+    border-color: var(--primary-dark-detail);
 }
 
 input:checked + .slider > * {
@@ -66,6 +93,10 @@ input:checked + .slider > * {
     transform: translateX(var(--slider-translation));
     background-color: var(--primary-dark);
     color: var(--background-dark);
+}
+
+input:checked + .slider:hover > * {
+    background-color: var(--primary-dark-detail);
 }
 
 .slider > *:first-child,

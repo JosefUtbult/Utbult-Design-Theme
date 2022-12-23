@@ -2,6 +2,8 @@ from setuptools import setup, find_packages
 
 VERSION = '0.0.1'
 
+print(f"packaged: {find_packages()}")
+
 setup(
     name="mkdocs-utbult-design",
     version=VERSION,

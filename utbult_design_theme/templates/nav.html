@@ -1,3 +1,4 @@
+{% if nav_item.title.lower() != "index" %}
 {% if not nav_item.children %}
 <li {% if nav_item.active %}class="active"{% endif %}>
   <div class="burger-heading-container">
@@ -10,7 +11,17 @@
 {% else %}
   <li>
     <div class="burger-heading-container">
-      <h1>{{ nav_item.title }}</h1>
+      {% for nav_child in nav_item.children %}
+        {% if nav_child.title.lower() == "index" %}
+          <a href="{{ nav_child.url|url }}">
+        {% endif %}
+      {% endfor %}
+            <h1>{{ nav_item.title }}</h1>
+      {% for nav_child in nav_item.children %}
+        {% if nav_child.title.lower() == "index" %}
+          </a>
+        {% endif %}
+      {% endfor %}
       <div>
         <button onclick="toggleBurgerMenuInstance(this)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" preserveAspectRatio="none">
@@ -22,8 +33,9 @@
     </div>
     <ul class="hidden">
       {% for nav_item in nav_item.children %}
-      {% include "nav.html" %}
+      {% include "templates/nav.html" %}
       {% endfor %}
     </ul>
   </li>
+{% endif %}
 {% endif %}

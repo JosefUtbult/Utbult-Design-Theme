@@ -3,12 +3,24 @@
 }
 
 #burger-menu {
+    position: fixed;
+    top: 0;
+    left: calc(100% - var(--header-icon-height) - var(--header-icon-margin));
+    width: calc(var(--header-icon-height) + var(--header-icon-margin));
+    height: var(--header-height);
+    z-index: 3;
     display: flex;
     flex-direction: row;
 }
 
+.theme-transition body #burger-menu {
+    transition: background-color var(--theme-transition),
+        width var(--burger-menu-open),
+        left var(--burger-menu-open);
+}
+
 #burger-menu-button-container button{
-    width: calc(var(--header-icon-height) - var(--header-icon-margin));
+    width: calc(var(--header-icon-height));
     height: auto;
     margin-top: var(--header-icon-margin);
     margin-right: var(--header-icon-margin);
@@ -17,28 +29,33 @@
 }
 
 #burger-menu-content {
-    width: 0;    
-    transition: width var(--burger-menu-open);
+    width: calc(100% - var(--header-icon-height) - var(--header-icon-margin));
+    height: 100vh;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.light #burger-menu-content {
+.theme-transition body #burger-menu-content {
+    transition: background-color var(--theme-transition),
+        width var(--burger-menu-open),
+        left var(--burger-menu-open);
+}
+
+.light body #burger-menu-content {
     background-color: var(--secondary-light);
     color: var(--text-light);
 }
 
-.dark #burger-menu-content {
+.dark body #burger-menu-content {
     background-color: var(--secondary-dark);
     color: var(--text-dark);
 }
 
-#burger-menu.open > #burger-menu-content {
-    width: var(--burger-menu-width);
-    /* width: auto; */
+#burger-menu.open {
+    left: calc(100% - var(--header-icon-height) - var(--header-icon-margin) - var(--burger-menu-width));
+    width: calc(var(--header-icon-height) + var(--header-icon-margin) + var(--burger-menu-width));
 }
-
 
 #burger-menu-content h1,
 #burger-menu-content h2,
@@ -136,12 +153,16 @@
     width: 100%;
 }
 
-.light #burger-menu-content hr {
+.light body #burger-menu-content hr {
     border-color: var(--text-light);
 }
 
-.dark #burger-menu-content hr {
+.dark body #burger-menu-content hr {
     border-color: var(--text-dark);
+}
+
+.theme-transition body #burger-menu-content hr {
+    transition: border-color var(--theme-transition);
 }
 
 #burger-menu-content .burger-heading-container {
@@ -156,10 +177,6 @@
 #burger-menu-content .burger-heading-container div {
     width: 10px;
     height: 10px;
-}
-
-#burger-menu-content #toc > li > .burger-heading-container div {
-    width: 0;
 }
 
 #burger-menu-content .burger-heading-container div > button {
