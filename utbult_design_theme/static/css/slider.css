@@ -37,11 +37,7 @@
     border: solid var(--slider-padding);
     border-color: var(--primary-light);
     border-radius: var(--header-icon-height);
-}
-
-.theme-transition body {
-    -webkit-transition: background-color var(--theme-transition);
-    transition: background-color var(--theme-transition);
+    
 }
 
 .slider:hover {
@@ -58,6 +54,19 @@
     background-color: var(--primary-light);
     color: var(--background-light);
     border-radius: 50%;
+}
+
+.slider, .slide > * {
+    -webkit-transition: transform var(--hover-transition),
+        background-color var(--hover-transition),
+        border-color var(--hover-transition),
+        opacity var(--hover-transition),
+        color var(--hover-transition);
+    transition: transform var(--hover-transition),
+        background-color var(--hover-transition),
+        border-color var(--hover-transition),
+        opacity var(--hover-transition),
+        color var(--hover-transition);
 }
 
 .theme-transition body .slider,

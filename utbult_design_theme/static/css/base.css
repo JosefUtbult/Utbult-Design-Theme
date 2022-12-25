@@ -28,7 +28,7 @@
     /* Transitions */
     --theme-transition: 400ms ease-in-out;
     --burger-menu-open: 200ms ease-in-out;
-    --button-transition: 200ms ease-in-out;
+    --hover-transition: 100ms ease-in;
     /* --burger-menu-open: 2s ease-in-out; */
 
     /* Sizes */
@@ -39,9 +39,10 @@
 }
 
 .theme-transition body {
-    transition: background-color var(--theme-transition),
-        color var(--theme-transition);
+    -webkit-transition: background-color var(--theme-transition);
+    transition: background-color var(--theme-transition);
 }
+
 
 h1,
 h2,
@@ -76,7 +77,9 @@ h1 {
 .theme-transition body h5,
 .theme-transition body h6,
 .theme-transition body svg,
-.theme-transition body p {
+.theme-transition body p,
+.theme-transition body a {
+    -webkit-transition: color var(--theme-transition);
     transition: color var(--theme-transition);
 }
 
@@ -87,6 +90,17 @@ a {
 
 a {
     text-decoration: none;
+    color: inherit
+    -webkit-transition: color var(--hover-transition);
+    transition: color var(--hover-transition);
+}
+
+.dark body a:hover {
+    color: var(--secondary-dark)
+}
+
+.light body a:hover {
+    color: var(--secondary-light)
 }
 
 .dark body {
@@ -97,6 +111,24 @@ a {
 .light body {
     background-color: var(--background-light);
     color: var(--text-light);
+}
+
+.btn {
+    -webkit-transition: background-color var(--hover-transition),
+        border-color var(--hover-transition),
+        color var(--hover-transition);
+    transition: background-color var(--hover-transition),
+        border-color var(--hover-transition),
+        color var(--hover-transition);
+}
+
+.theme-transition body .btn {
+    -webkit-transition: background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        color var(--theme-transition);
+    transition: background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        color var(--theme-transition);
 }
 
 .dark body .btn {
@@ -123,24 +155,6 @@ a {
     color: var(--text-light);
 }
 
-.theme-transition body .btn {
-    -webkit-transition: background-color var(--theme-transition),
-        border-color var(--theme-transition),
-        color var(--theme-transition);
-    transition: background-color var(--theme-transition),
-        border-color var(--theme-transition),
-        color var(--theme-transition);
-}
-
-.theme-transition body .btn:hover {
-    -webkit-transition: background-color var(--button-transition),
-        border-color var(--button-transition),
-        color var(--button-transition);
-    transition: background-color var(--button-transition),
-        border-color var(--button-transition),
-        color var(--button-transition);
-}
-
 @media (max-width: 1610px) {
     .header-margin {
         height: var(--header-height);
@@ -149,4 +163,8 @@ a {
 
 .content-container {
     min-height: 100vh;
+}
+
+.content-container img {
+    max-width: 100%;
 }

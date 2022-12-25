@@ -13,10 +13,14 @@
     flex-direction: row;
 }
 
-.theme-transition body #burger-menu {
-    transition: background-color var(--theme-transition),
+#burger-menu {
+    transition: background-color var(--hover-transition),
         width var(--burger-menu-open),
         left var(--burger-menu-open);
+}
+
+.theme-transition body #burger-menu {
+    transition: background-color var(--theme-transition);
 }
 
 #burger-menu-button-container button{
@@ -36,10 +40,13 @@
     text-overflow: ellipsis;
 }
 
-.theme-transition body #burger-menu-content {
-    transition: background-color var(--theme-transition),
-        width var(--burger-menu-open),
+#burger-menu-content {
+    transition: width var(--burger-menu-open),
         left var(--burger-menu-open);
+}
+
+.theme-transition body #burger-menu-content {
+    transition: background-color var(--theme-transition);
 }
 
 .light body #burger-menu-content {
@@ -135,9 +142,9 @@
 
 #burger-menu-content ul {
     overflow-y: hidden;
-    transition: height var(--burger-menu-open);
     margin: 0;
     padding-left: 10px;
+    transition: height var(--burger-menu-open);
 }
 
 #burger-menu-content ul.hidden {

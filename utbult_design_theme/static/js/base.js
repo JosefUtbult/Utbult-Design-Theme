@@ -12,14 +12,13 @@ function setTheme() {
     window.onload = () => {
         const lightmode = localStorage.getItem('theme') == 'light';
         document.getElementById("theme-switch").checked = !lightmode;
-        setTimeout(()=>{
-            document.documentElement.classList.add('theme-transition');
-        }, 500);
     };
 }
 
 function toggleLightDarkMode() {
     const lightmode = document.getElementById("theme-switch").checked;
+    document.documentElement.classList.add('theme-transition');
+
     if(lightmode){
         document.documentElement.classList.remove('light')
         document.documentElement.classList.add('dark')
@@ -28,12 +27,14 @@ function toggleLightDarkMode() {
         document.documentElement.classList.remove('dark')
         document.documentElement.classList.add('light')
     }
-
+    
     localStorage.setItem('theme', lightmode ? 'dark' : 'light');
+    setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+    }, 500);
 }
 
 function toggleBurgerMenu() {
-    console.log("Toggle");
     const el = document.getElementById('burger-menu');
     if(el.classList.contains('open')) {
         el.classList.remove('open');
@@ -44,7 +45,6 @@ function toggleBurgerMenu() {
 }
 
 function closeBurgerMenu() {
-    console.log("Close");
     const el = document.getElementById('burger-menu');
     if(el.classList.contains('open')) {
         el.classList.remove('open');

@@ -1,0 +1,27 @@
+{% extends "templates/base.html" %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{{ 'static/css/category.css'|url }}">
+{% endblock %}
+
+{% block content %}
+<h1>{{ page.parent.title }}</h1>
+
+{% for child in page.parent.children %}
+{% if child.title.lower() != "index" %}
+<div class="category-instance">
+    <div>
+        <a href="{{ child.url|url }}"><h4>{{ child.title }}</h4></a>
+        {% if child.meta.description %}
+        <p>{{ child.meta.description }}</p>
+    </div>
+    <div>
+        {% if child.meta.image %}
+        <img src="{{ child.meta.image|url }}">
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endblock %}

@@ -30,10 +30,9 @@
 		<link rel="stylesheet" href="{{ 'static/css/header.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/burgerMenu.css'|url }}">
 
-		{% if page_css %}
+		{% block page_css %}
 		<!-- Page specific stylesheets -->
-		{{ page_css }}
-		{% endif %}
+		{% endblock %}
 
 		<!-- Base script handling dark and light mode -->
 		<script src="{{'static/js/base.js'|url }}"></script>
@@ -119,7 +118,8 @@
 		<div class="content-container" onclick="closeBurgerMenu()">
 			<div id="content" class="container">
 				<div class="header-margin"></div>
-				{{ page.content }}
+				{% block content %}
+				{% endblock %}
 			</div>
 		</div>
 	</body>
