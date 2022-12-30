@@ -24,27 +24,50 @@
 		<!-- Skeleton responsive boilerplate and base stylesheets -->
 		<link rel="stylesheet" href="{{ 'static/css/skeleton.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/normalize.css'|url }}">
+
+		<!-- Theme specific stylesheets -->
 		<link rel="stylesheet" href="{{ 'static/fonts/fonts.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/base.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/slider.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/header.css'|url }}">
 		<link rel="stylesheet" href="{{ 'static/css/burgerMenu.css'|url }}">
 
-		{% block page_css %}
+		<!-- highlight.js stylesheets -->
+		<link rel="stylesheet" href="{{ 'static/css/highlightjs.css'|url }}">
+		
+		
+		<!-- Light -->
+		<!-- <link rel="stylesheet" href="{{ 'static/highlight/styles/docco.min.css'|url }}"> -->
+		<!-- <link rel="stylesheet" href="{{ 'static/highlight/styles/panda-syntax-light.min.css'|url }}"> -->
+		
 		<!-- Page specific stylesheets -->
+		{% block page_css %}
 		{% endblock %}
 
-		<!-- Base script handling dark and light mode -->
+		<!-- Base script handling burger menu, dark and light mode -->
 		<script src="{{'static/js/base.js'|url }}"></script>
 
-		{% if page_js %}
-		<!-- Page specific scripts -->
-		{{ page_js }}
+		{% if config.extra_javascript and config.extra_javascript|length %}
+		<!-- Extra javascript from config file -->
+		{% for instance in config.extra_javascript %}
+		<script src="{% if 'http' in instance %}{{ instance }}{% else %}{{ instance|url }}{% endif %}"></script>
+		{% endfor %}
 		{% endif %}
 
+		<!-- highlight.js script -->
+		<script src="{{ 'static/highlight/highlight.min.js'|url }}"></script>
+		<script>
+			hljs.configure({ignoreUnescapedHTML: true}); 
+			hljs.highlightAll();
+		</script>
+
+		<!-- Page specific scripts -->
+		{% block page_js %}
+		{% endblock %}
+
+		<!-- MKDocs specific scripts -->
+
 	</head>
-	<!-- <body onload="setTheme()"> -->
-	<!-- <body class="dark theme-transition"> -->
 	<body>
 		<div id="header" onclick="closeBurgerMenu()">
 			<a class="logo" href="/{% if lang == 'en' %}en/{% elif lang == 'sv' %}sv/{% endif %}">

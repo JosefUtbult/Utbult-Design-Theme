@@ -25,6 +25,10 @@
     --disabled-dark: #353535;
     --disabled-dark-detail: rgb(139, 139, 139);
 
+    /* Sizes */
+    --border: 1px solid;
+    --blockquote-margin: 20px;
+
     /* Transitions */
     --theme-transition: 400ms ease-in-out;
     --burger-menu-open: 200ms ease-in-out;
@@ -38,11 +42,20 @@
     --burger-menu-width: 400px;
 }
 
+.dark body {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.light body {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
 .theme-transition body {
     -webkit-transition: background-color var(--theme-transition);
     transition: background-color var(--theme-transition);
 }
-
 
 h1,
 h2,
@@ -59,7 +72,8 @@ h1 {
 }
 
 #content h1 {
-    border-bottom: 1px solid;
+    border-bottom: var(--border);
+    padding-bottom: .1em;
 }
 
 .light body h1 {
@@ -103,14 +117,27 @@ a {
     color: var(--secondary-light)
 }
 
-.dark body {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
+blockquote {
+    margin: var(--blockquote-margin) var(--blockquote-margin) var(--blockquote-margin) 0;
+    padding-left: var(--blockquote-margin);
+    border-left: var(--border); 
 }
 
-.light body {
-    background-color: var(--background-light);
-    color: var(--text-light);
+blockquote p {
+    font-family: UbuntuMono;
+    font-size: 1.1em;
+}
+
+.dark body blockquote {
+    border-color: var(--primary-dark);
+}
+
+.light body blockquote {
+    border-color: var(--primary-light);
+}
+
+.theme-transition body blockquote {
+    transition: border-color var(--theme-transition);
 }
 
 .btn {
