@@ -71,6 +71,27 @@ h1 {
     font-size: 5rem;
 }
 
+* + h1 {
+    padding-top: 1.5em;
+}
+
+* + h2 {
+    padding-top: 1em;
+}
+
+* + h3 {
+    padding-top: .6em;
+}
+
+* + h4 {
+    padding-top: .4em;
+}
+
+
+* + h5 {
+    padding-top: .3em;
+}
+
 #content h1 {
     border-bottom: var(--border);
     padding-bottom: .1em;
@@ -103,8 +124,8 @@ a {
 }
 
 a {
-    text-decoration: none;
-    color: inherit
+    text-decoration: underline;
+    color: inherit;
     -webkit-transition: color var(--hover-transition);
     transition: color var(--hover-transition);
 }
@@ -194,4 +215,27 @@ blockquote p {
 
 .content-container img {
     max-width: 100%;
+}
+
+.content-container img[align] {
+    max-width: 50%;
+    
+}
+.content-container img[align=right] {
+    margin-left: 20px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,
+td {
+    padding: 4px 6px;
+}
+
+th[align=right],
+td[align=right] {
+    text-align: right;
 }
