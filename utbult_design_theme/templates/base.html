@@ -28,6 +28,10 @@
 	<head>
 		<meta charset="utf-8">
 		<title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+
+		{% if config.theme.favicon %}
+		<link rel="icon" href="{{ config.theme.favicon|url }}" />
+		{% endif %}
 		
 		<!-- Skeleton responsive boilerplate and base stylesheets -->
 		<link rel="stylesheet" href="{{ 'static/css/skeleton.css'|url }}">
@@ -85,8 +89,22 @@
 	<body>
 		<div id="header" onclick="closeBurgerMenu()">
 			<a class="logo" href="{{ base_url }}{{ lang_url() }}">
-				<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_White.svg'|url }}">
-				<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_Black.svg'|url }}">
+				{% if config.theme.logo_light and config.theme.logo_dark %}
+					<img src="{{ config.theme.logo_light|url }}">
+					<img src="{{ config.theme.logo_dark|url }}">
+				{% elif config.theme.logo %}
+					<img src="{{ config.theme.logo|url }}">
+					<img src="{{ config.theme.logo|url }}">
+				{% elif config.theme.logo_dark %}
+					<img src="{{ config.theme.logo_dark|url }}">
+					<img src="{{ config.theme.logo_dark|url }}">
+				{% elif config.theme.logo_light %}
+					<img src="{{ config.theme.logo_light|url }}">
+					<img src="{{ config.theme.logo_light|url }}">
+				{% else %}
+					<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_White.svg'|url }}">
+					<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_Black.svg'|url }}">
+				{% endif %}
 			</a>
 			<div>
 				<div class="btn-container">
