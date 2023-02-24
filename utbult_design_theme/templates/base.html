@@ -5,13 +5,21 @@
 	{% set lang = 'sv' %}
 {% endif %}
 
-{% macro lang_url() %}
+{% macro swap_lang_url() %}
 	{% if not lang %}
-		/en/{{ page.url }}
+		{{ base_url }}/en/{{ page.url }}
 	{% elif lang == 'sv' %}
-		/en/{{ page.url[3:] }}
+		{{ base_url }}/en/{{ page.url[3:] }}
 	{% elif lang == 'en' %}
-		/sv/{{ page.url[3:] }}
+		{{ base_url }}/sv/{{ page.url[3:] }}
+	{% endif %}
+{% endmacro %}
+
+{% macro lang_url() %}
+	{% if lang == 'en' %}
+		/en/
+	{% else %}
+		/sv/
 	{% endif %}
 {% endmacro %}
 
@@ -82,7 +90,7 @@
 			</a>
 			<div>
 				<div class="btn-container">
-					<a href="{{ lang_url() }}">
+					<a href="{{ swap_lang_url() }}">
 						<button class="btn">
 							{% if not lang or lang == 'sv' %}In English{% else %}På Svenska{% endif %}
 						</button>
