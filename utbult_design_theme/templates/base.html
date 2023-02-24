@@ -76,7 +76,7 @@
 	</head>
 	<body>
 		<div id="header" onclick="closeBurgerMenu()">
-			<a class="logo" href="/{% if lang == 'en' %}en/{% elif lang == 'sv' %}sv/{% endif %}">
+			<a class="logo" href="{{ base_url }}{{ lang_url() }}">
 				<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_White.svg'|url }}">
 				<img src="{{ 'static/svg/Utbult-Design-Logo/logo/UtbultDesign_Black.svg'|url }}">
 			</a>
