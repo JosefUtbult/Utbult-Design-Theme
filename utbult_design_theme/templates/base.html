@@ -77,14 +77,14 @@
 		<!-- highlight.js stylesheets -->
 		<link rel="stylesheet" href="{{ 'static/css/highlightjs.css'|url }}">
 		
-		
-		<!-- Light -->
-		<!-- <link rel="stylesheet" href="{{ 'static/highlight/styles/docco.min.css'|url }}"> -->
-		<!-- <link rel="stylesheet" href="{{ 'static/highlight/styles/panda-syntax-light.min.css'|url }}"> -->
-		
 		<!-- Page specific stylesheets -->
 		{% block page_css %}
 		{% endblock %}
+
+		<!-- Custom style sheets -->
+		{% for path in config.extra_css %}
+			<link rel="stylesheet" href="{{ path | url }}" />
+		{% endfor %}
 
 		<!-- Base script handling burger menu, dark and light mode -->
 		<script src="{{'static/js/base.js'|url }}"></script>
