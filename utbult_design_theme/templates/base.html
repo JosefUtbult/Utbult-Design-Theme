@@ -6,7 +6,9 @@
 			{% set _ = container.append(loop.index - 1) %}
 		{% endif %}
 	{% endfor %}
-	{% set lang_index = container[0] %}
+	{% if container|length %}
+		{% set lang_index = container[0] %}
+	{% endif %}
 {% endif %}
 
 {# Take the current language index and increment it to get the url for the next language #}
@@ -17,13 +19,15 @@
 
 {# Take the current language index and increment to get the next language #}
 {% macro swap_lang_name() %}
-	{% set next_index = (lang_index + 1) % config.extra.alternate|length %}
-	{{ config.extra.alternate[next_index].name }}
+	{% if lang_index != Undefined %}
+		{% set next_index = (lang_index + 1) % config.extra.alternate|length %}
+		{{ config.extra.alternate[next_index].name }}
+	{% endif %}
 {% endmacro %}
 
 {# Get the url for the current language #}
 {% macro lang_url() %}
-	{% if config.extra.alternate %}
+	{% if config.extra.alternate and lang_index != Undefined %}
 		{{ config.extra.alternate[lang_index].link }}
 	{% else %}
 		{{ base_url }}
@@ -32,7 +36,7 @@
 
 {# Create a language toggle button #}
 {% macro lang_button() %}
-	{% if config.extra.alternate %}
+	{% if config.extra.alternate and lang_index != Undefined %}
 		<div class="btn-container">
 			<a href="{{ swap_lang_url() }}">
 				<button class="btn">

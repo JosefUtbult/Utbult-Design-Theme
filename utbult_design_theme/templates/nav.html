@@ -1,8 +1,8 @@
 <ul id="nav">
 	{# Skip the root folders for each language in the navigation if config.extra.alternate is specified #}
-	{% if config.extra.alternate %}
+	{% if config.extra.alternate and lang_index != Undefined %}
 		{% for lang_item in nav %}
-			{% if lang_item.title.lower() == config.extra.alternate[lang_index].lang and lang_item.children %}
+			{% if lang_item.children and lang_item.title.lower() == config.extra.alternate[lang_index].lang %}
 				{% for nav_item in lang_item.children %}
 					{% include "templates/nav_instance.html" %}
 				{% endfor %}
